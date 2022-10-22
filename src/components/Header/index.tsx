@@ -1,7 +1,10 @@
-import { useEffect } from "react";
-import { HeaderContainer, HeaderContent, HeaderLink, HeaderNav } from "./styles";
+import { HeaderContainer, HeaderContent, HeaderLink, HeaderNav } from "./styles"
+
+import { useLocation, Link } from 'react-router-dom'
 
 const Header = () => {
+
+  const { pathname } = useLocation()
 
   return (
     <HeaderContainer>
@@ -9,8 +12,12 @@ const Header = () => {
         <h1>MY HERO LIBRARY</h1>
 
         <HeaderNav>
-          <HeaderLink href="#" active>Home</HeaderLink>
-          <HeaderLink href="#">My Lists</HeaderLink>
+          <Link to="/">
+            <HeaderLink active={pathname !== '/my-lists'}>Home</HeaderLink>
+          </Link>
+          <Link to="/my-lists">
+            <HeaderLink active={pathname === '/my-lists'}>My Lists</HeaderLink>
+          </Link>
         </HeaderNav>
       </HeaderContent>
     </HeaderContainer>

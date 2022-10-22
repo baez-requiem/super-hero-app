@@ -3,11 +3,16 @@ import { getHerosByRange, HeroType, getHerosByName } from "../../../api/superher
 
 const limitHeros = 731
 
+type Hero = {
+  id: string
+  name: string
+  image: string
+}
+
 type Lists = {
   id: number
   name: string
-  heros: string[]
-  createdAt: string
+  heros: Hero[]
 }
 
 const useHome = () => {

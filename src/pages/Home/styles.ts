@@ -2,10 +2,14 @@ import styled from "styled-components"
 
 export const HeroListContainer = styled.section`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 1.5rem;
+
+  @media (max-width: 768px) {
+   justify-content: space-around;
+  }
 `
 
 export const HeroButtonContainer = styled.div`
@@ -55,31 +59,8 @@ export const InputContainer = styled.div`
   margin-bottom: 2rem;
 `
 
-export const InputContent = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  border-radius: 1.5rem;
-  
-  background-color: ${({ theme }) => theme.colors.gray_800};
-  padding: .25rem 1rem;
-  
-  input {
-    border: none;
-    font-size: 1.5rem;
-    background-color: ${({ theme }) => theme.colors.gray_800};
-    
-    color: ${({ theme }) => theme.colors.gray_100};
-    caret-color: ${({ theme }) => theme.colors.gray_100};
-
-    :focus{
-        outline: none;
-    }
-  }
-`
-
 export const NoHerosText = styled.h4`
+  width: 100%;
   text-align: center;
 
   color: ${({ theme }) => theme.colors.red_600}60;

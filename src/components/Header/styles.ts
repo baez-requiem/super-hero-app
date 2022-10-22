@@ -53,7 +53,7 @@ interface HeaderLinkProps {
   active?: boolean
 }
 
-export const HeaderLink = styled.a<HeaderLinkProps>`
+export const HeaderLink = styled.span<HeaderLinkProps>`
   display: inline-block;
   position: relative;
   padding: 0.5rem;
@@ -63,7 +63,7 @@ export const HeaderLink = styled.a<HeaderLinkProps>`
 
   transition: color .3s;
 
-  & + a {
+  & + span {
     margin-left: 1.5rem;
   }
 

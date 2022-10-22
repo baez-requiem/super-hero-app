@@ -7,8 +7,11 @@ const theme = {
     gray_900: '#121214',
 
     red_600: '#DC2626',
-    yellow_500: '#EAB308',
 
+    yellow_500: '#EAB308',
+    
+    blue_600: '#2563EB',
+    
     white: '#FFFFFF',
   }
 }

@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react"
 
+type Hero = {
+  id: string
+  name: string
+  image: string
+}
+
 type Lists = {
   id: number
   name: string
-  heros: string[]
-  createdAt: string
+  heros: Hero[]
 }
 
 const useHeroCard = () => {
@@ -19,16 +24,23 @@ const useHeroCard = () => {
     setLists(list)
   }
 
-  const toggleHeroList = (idList: number, idHero: string) => {
+  const toggleHeroList = (
+      idList: number,
+      { id: idHero, name, image }: Hero
+    ) => {
     const cloneLists = [...useLists]
 
     const idx = cloneLists.findIndex(list => list.id === idList)
 
-    const hasHero = cloneLists[idx].heros.includes(idHero)
+    const hasHero = cloneLists[idx].heros.some(hero => hero.id === idHero)
 
     hasHero
-      ? cloneLists[idx].heros = cloneLists[idx].heros.filter(id => id !== idHero)
-      : cloneLists[idx].heros.push(idHero)
+      ? cloneLists[idx].heros = cloneLists[idx].heros.filter(hero => hero.id !== idHero)
+      : cloneLists[idx].heros.push({
+        id: idHero,
+        name,
+        image
+      })
 
     setLists(cloneLists)
 

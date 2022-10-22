@@ -27,6 +27,16 @@ export const getHeroByID = async (id: string): Promise<HeroType> => {
   return data
 }
 
+export const getHerosByID = async (ids: string[]): Promise<HeroType[]> => {
+  const result = await Promise.all(ids.map(async id => {
+    const { data } = await superHeroApi.get(`/${id}`)
+
+    return data
+  }))
+
+  return result
+}
+
 export const getHerosByName = async (name: string): Promise<HeroType[]> => {
   const { data } = await superHeroApi.get(`/search/${name}`)
 

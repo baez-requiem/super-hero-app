@@ -1,19 +1,13 @@
 import styled from "styled-components"
 
 const MainContainer = styled.main`
-  margin: 1rem auto;
-  padding: 2rem;
+  padding: 1rem;
+  margin: 0 auto;
 
   max-width: 1020px;
-  height: calc(100vh - 7rem);
+  height: calc(100vh - 5rem);
 
   overflow-y: auto;
-
-  /* display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-between;
-  flex-wrap: nowrap; */
 `
 
 export default MainContainer
