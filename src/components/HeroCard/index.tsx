@@ -6,7 +6,7 @@ import { useHeroCard } from "./hooks/useHeroCard"
 type HeroCardProps = {
   id: string
   name: string
-  image?: string
+  image: string
   onClick: () => void,
 }
 
@@ -41,10 +41,10 @@ const HeroCard = ({ id, image, name, onClick }: HeroCardProps) => {
           </ListItemClose>
 
           {useLists.map(list => (
-            <ListItem key={`li_${id}_${list.id}`} active={list.heros.includes(id)}>
+            <ListItem key={`li_${id}_${list.id}`} active={list.heros.some(hero => hero.id === id)}>
               <span>{list.name}</span>
               <div>
-                <AiFillStar size={22} onClick={() => toggleHeroList(list.id, id)} />
+                <AiFillStar size={22} onClick={() => toggleHeroList(list.id, { id, name, image })} />
               </div>
             </ListItem>
           ))}

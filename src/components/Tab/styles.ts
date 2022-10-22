@@ -4,7 +4,10 @@ export const TabContainer = styled.div``
 
 export const LabelsContainer = styled.div`
   display: flex;
+  align-items: flex-end;
+
   margin-bottom: .5rem;
+  overflow-x: auto;
 `
 
 interface LabelsTitleProps {
@@ -13,11 +16,15 @@ interface LabelsTitleProps {
 
 export const LabelsTitle = styled.h3<LabelsTitleProps>`
   position: relative;
-  color: ${({ theme }) => theme.colors.gray_300};
   cursor: pointer;
   transition: color .3s;
   
   padding: 0.5rem 1rem;
+
+  text-align: center;
+  color: ${({ theme }) => theme.colors.gray_300};
+  
+  min-width: 150px;
 
   &:hover {
     color: ${({ theme }) => theme.colors.gray_100};

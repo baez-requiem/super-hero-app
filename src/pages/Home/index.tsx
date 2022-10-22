@@ -1,6 +1,6 @@
 import { Header, HeroCard, MainContainer, ModalHeroDetails, SearchInput } from "../../components"
 import { useHome } from "./hooks/useHome"
-import { HeroButtonContainer, HeroListContainer, LoadMoreButton, InputContainer, InputContent, NoHerosText } from "./styles"
+import { HeroButtonContainer, HeroListContainer, LoadMoreButton, InputContainer, NoHerosText } from "./styles"
 
 const Home = () => {
 

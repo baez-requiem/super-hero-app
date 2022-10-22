@@ -28,7 +28,8 @@ export default createGlobalStyle`
   }
 
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
+    height: 5px;
   }
   ::-webkit-scrollbar-track {
     background: ${({ theme }) => theme.colors.gray_800};
@@ -48,20 +49,4 @@ export default createGlobalStyle`
   @media (max-width: 480px) {
     html { font-size: 81.25%; }
   }
-
-
-  /* body {
-    background-color: #001019;
-    font-size: 14px;
-    color: #f5f5f5;
-    font-family: 'Nunito', sans-serif;
-    overflow-x: hidden;
-  }
-  
-  h1, h2, h3, h4, h5, button {
-    font-family: 'Roboto', sans-serif;
-  }
-  a {
-    all: unset;
-  } */
 `
