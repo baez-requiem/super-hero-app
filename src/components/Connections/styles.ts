@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
 
 export const Container = styled.div``
 
@@ -18,42 +18,5 @@ export const InfoRow = styled.div`
   h3 + h3 {
     color: ${({ theme }) => theme.colors.gray_300};
     width: auto;
-  }
-`
-
-const progressAnim = (width:number = 0) => keyframes`
-  0% {
-    width: 0%;
-  }
-
-  100% {
-    width: ${width}%;
-  }
-`
-
-interface ProgressProps {
-  value?: number
-}
-
-export const Progress = styled.div<ProgressProps>`
-  width: 100%;
-  height: 10px;
-  border-radius: 5px;
-  position: relative;
-  overflow: hidden;
-  background-color: ${({ theme }) => theme.colors.gray_800};
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: 3;
-    width: 0%;
-    height: 10px;
-    background-color: ${({ theme }) => theme.colors.red_600};
-
-    
-    animation: ${({ value }) => progressAnim(value)} 1s linear forwards .5s;
   }
 `

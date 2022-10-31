@@ -1,6 +1,20 @@
-import { Header, HeroCard, MainContainer, ModalHeroDetails, SearchInput } from "../../components"
+import { 
+  Header,
+  HeroCard,
+  MainContainer,
+  ModalHeroDetails,
+  SearchInput
+} from "../../components"
+
+import {
+  HeroButtonContainer,
+  HeroListContainer,
+  LoadMoreButton,
+  InputContainer,
+  NoHerosText
+} from "./styles"
+
 import { useHome } from "./hooks/useHome"
-import { HeroButtonContainer, HeroListContainer, LoadMoreButton, InputContainer, NoHerosText } from "./styles"
 
 const Home = () => {
 
@@ -41,9 +55,9 @@ const Home = () => {
         </HeroListContainer>
         
         <HeroButtonContainer>
-          {hasLoadMore && (
+          {hasLoadMore ? (
             <LoadMoreButton onClick={loadMore}>Load more</LoadMoreButton>
-          )}
+          ) : null}
         </HeroButtonContainer>
 
       </MainContainer>

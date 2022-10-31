@@ -1,4 +1,4 @@
-import { Container, InfoRow, Progress } from "./styles"
+import { Container, InfoRow } from "./styles"
 
 type AppearanceDataProps = {
   gender: string

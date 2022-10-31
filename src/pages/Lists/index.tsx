@@ -1,7 +1,22 @@
-import { Button, Header, Input, MainContainer, Select, HeroCard, ModalHeroDetails } from "../../components"
-import { ActionsContent, HeroListContainer, NoHerosText } from "./styles"
+import {
+  Button,
+  Header,
+  Input,
+  MainContainer,
+  Select,
+  HeroCard,
+  ModalHeroDetails
+} from "../../components"
+
+import {
+  ActionsContent,
+  HeroListContainer,
+  NoHerosText
+} from "./styles"
+
 import { GoPlus, GoTrashcan } from "react-icons/go"
 import { IoRefreshSharp } from 'react-icons/io5'
+
 import { useLists } from "./hooks/useLists"
 
 const Lists = () => {

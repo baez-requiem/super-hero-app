@@ -1,32 +1,18 @@
 import { useEffect, useState } from "react"
-import { getHerosByID } from "../../../api/superhero"
-
-type Hero = {
-  id: string
-  name: string
-  image: string
-}
-
-type Lists = {
-  id: number
-  name: string
-  heros: Hero[]
-}
+import { getAllLists, addNewList, deleteListByID, ListType } from "../../../storage/lists"
 
 const useLists = () => {
   const [useNewListName, setNewListName] = useState<string>('')
-  const [useHerosLists, setHerosLists] = useState<Lists[]>([])
+  const [useHerosLists, setHerosLists] = useState<ListType[]>([])
   const [useSelectedList, setSelectedList] = useState<number|undefined>(undefined)
   const [useHeroDetails, setHeroDetails] = useState<string>('')
 
   const getHeroLists = () => {
-    const listJSON = localStorage.getItem('lists')
-  
-    const list: Lists[] = listJSON ? JSON.parse(listJSON) : []
+    const lists = getAllLists()
 
-    setHerosLists(list)
+    setHerosLists(lists)
 
-    list[0]?.id && setSelectedList(list[0].id)
+    lists[0]?.id && setSelectedList(lists[0].id)
   }
 
   const createNewList = () => {
@@ -38,24 +24,18 @@ const useLists = () => {
       heros: []
     }
 
-    const newLists = [...useHerosLists, listData]
+    const newLists = addNewList(listData)
     
-    setHerosLists(newLists)
-
-    localStorage.setItem('lists', JSON.stringify(newLists))
-
     setNewListName('')
+    setHerosLists(newLists)
   }
 
   const deleteList = () => {
     if (!useSelectedList) return
 
-    const newLists = useHerosLists.filter(list => list.id !== useSelectedList)
+    const newLists = deleteListByID(useSelectedList)
 
     setHerosLists(newLists)
-
-    localStorage.setItem('lists', JSON.stringify(newLists))
-
     setSelectedList(newLists[0]?.id || undefined)
   }
 

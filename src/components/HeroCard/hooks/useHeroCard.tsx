@@ -1,50 +1,21 @@
 import { useEffect, useState } from "react"
 
-type Hero = {
-  id: string
-  name: string
-  image: string
-}
-
-type Lists = {
-  id: number
-  name: string
-  heros: Hero[]
-}
+import { getAllLists, toggleHeroInList, HeroType, ListType } from "../../../storage/lists"
 
 const useHeroCard = () => {
   const [useShowList, setShowList] = useState<boolean|null>(null)
-  const [useLists, setLists] = useState<Lists[]>([])
+  const [useLists, setLists] = useState<ListType[]>([])
 
   const getHeroLists = () => {
-    const listJSON = localStorage.getItem('lists')
-  
-    const list: Lists[] = listJSON ? JSON.parse(listJSON) : []
+    const lists = getAllLists()
 
-    setLists(list)
+    setLists(lists)
   }
 
-  const toggleHeroList = (
-      idList: number,
-      { id: idHero, name, image }: Hero
-    ) => {
-    const cloneLists = [...useLists]
+  const toggleHero = (idList: number, hero: HeroType) => {
+    const updatedLists = toggleHeroInList(idList, hero)
 
-    const idx = cloneLists.findIndex(list => list.id === idList)
-
-    const hasHero = cloneLists[idx].heros.some(hero => hero.id === idHero)
-
-    hasHero
-      ? cloneLists[idx].heros = cloneLists[idx].heros.filter(hero => hero.id !== idHero)
-      : cloneLists[idx].heros.push({
-        id: idHero,
-        name,
-        image
-      })
-
-    setLists(cloneLists)
-
-    localStorage.setItem('lists', JSON.stringify(cloneLists))
+    setLists(updatedLists)
   }
 
   useEffect(() => {
@@ -55,7 +26,7 @@ const useHeroCard = () => {
     useShowList,
     setShowList,
     useLists,
-    toggleHeroList
+    toggleHero
   }
 }
 

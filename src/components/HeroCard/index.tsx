@@ -1,7 +1,17 @@
-import { SyntheticEvent } from "react"
-import { OpenListButton, CardContainer, HeroImageContent, HeroNameContent, ListContainer, ListItem, ListItemClose } from "./styles"
 import { AiOutlinePlus, AiFillStar, AiOutlineMinus } from 'react-icons/ai'
+import {
+  OpenListButton,
+  CardContainer,
+  HeroImageContent,
+  HeroNameContent,
+  ListContainer,
+  ListItem,
+  ListItemClose
+} from "./styles"
+
 import { useHeroCard } from "./hooks/useHeroCard"
+
+import { onImageError } from "../../utils"
 
 type HeroCardProps = {
   id: string
@@ -16,7 +26,7 @@ const HeroCard = ({ id, image, name, onClick }: HeroCardProps) => {
     useShowList,
     setShowList,
     useLists,
-    toggleHeroList
+    toggleHero
   } = useHeroCard()
 
   return (
@@ -26,9 +36,7 @@ const HeroCard = ({ id, image, name, onClick }: HeroCardProps) => {
           src={image}
           alt={name}
           onClick={onClick}
-          onError={(e: SyntheticEvent<HTMLImageElement, Event>) => {
-            e.currentTarget.src = "/no-picture-icon.webp"
-          }}
+          onError={onImageError}
         />
 
         <OpenListButton onClick={() => setShowList(true)}>
@@ -44,7 +52,7 @@ const HeroCard = ({ id, image, name, onClick }: HeroCardProps) => {
             <ListItem key={`li_${id}_${list.id}`} active={list.heros.some(hero => hero.id === id)}>
               <span>{list.name}</span>
               <div>
-                <AiFillStar size={22} onClick={() => toggleHeroList(list.id, { id, name, image })} />
+                <AiFillStar size={22} onClick={() => toggleHero(list.id, { id, name, image })} />
               </div>
             </ListItem>
           ))}

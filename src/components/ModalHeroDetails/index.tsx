@@ -1,10 +1,12 @@
 import { createPortal } from "react-dom"
 import { Tab, Powerstats, Biography, Appearance, Connections } from "../"
-import { useModalHeroDetails } from "./hooks/useModalHeroDetails"
 import { CloseButton, Container, DataContainer, ImageContainer, Overlay } from "./styles"
 
 import { GrFormClose } from 'react-icons/gr'
-import { SyntheticEvent } from "react"
+
+import { useModalHeroDetails } from "./hooks/useModalHeroDetails"
+
+import { onImageError } from "../../utils"
 
 type ModalHeroDetailsProps = {
   id?: string
@@ -27,9 +29,7 @@ const ModalHeroDetails = ({ id, show, onClose }: ModalHeroDetailsProps) => {
           <img
             src={useHeroData?.image?.url}
             alt={useHeroData?.name}
-            onError={(e: SyntheticEvent<HTMLImageElement, Event>) => {
-              e.currentTarget.src = "/no-picture-icon.webp"
-            }}
+            onError={onImageError}
           />
         </ImageContainer>
 
